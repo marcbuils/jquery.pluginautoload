@@ -13,6 +13,6 @@ LGPL v3 (http://www.gnu.org/licenses/lgpl-3.0.txt)
 v0.1.0: First release
 
 ##Usation
-’’’
+```
 <div data-jquery-type="{YOUR_PLUGIN_NAME}" data-jquery-params="{PARAMS}"></div>
-’’’  
+```  
