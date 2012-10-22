@@ -19,7 +19,7 @@
 
         <header>
           <h1>Jquery.pluginautoload</h1>
-          <h2>Plugin de chargement automatique des plugins à partir des balises HTML</h2>
+          <h2>Load your plugins on html DOM without javascript code.</h2>
         </header>
 
         <section id="downloads" class="clearfix">
@@ -48,11 +48,113 @@ This plugin is same as dojo or jQuery mobile system.</p>
 
 <h2>Current version</h2>
 
-<p>v0.1.0: First release</p>
+<p>v0.2.0: </p>
 
-<h2>Usation</h2>
+<ul>
+<li>Add Ajax automatic script import </li>
+<li>Add a better parmeters parser</li>
+</ul><h2>Usation</h2>
 
-<pre><code>&lt;div data-jquery-type="{YOUR_PLUGIN_NAME}" data-jquery-params="{PARAMS}"&gt;&lt;/div&gt;
+<p>For default use, load only jQuery.pluginautoload script:</p>
+
+<pre><code>&lt;script src="jquery.pluginautoload.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>And add data-jquery-type="{JQUERY_PLUGIN_NAME}" to apply a jQuery plugin on DOMs.
+You can add data-jquery-params='[param_1,param_2,...,param_n]' to use the plugin with parameters.</p>
+
+<p>You can change default options with following code:</p>
+
+<pre><code>&lt;script&gt;
+    ;(function($){
+        $.pluginautoload_options = $.extend({}, $.pluginautoload_options, {
+            autoload:       true,       // $('body').pluginautoload() is call when document is ready
+            autoimport:     true,       // Load script in Ajax if plugin isn't loaded
+            libs_dir:       'js/',      // Directory of plugins loaded in Ajax
+            filename:       function( p_type ){     // Function to compute the filename of plugins loaded in Ajax
+                return this.libs_dir + 'jquery.' + p_type.toLowerCase() + '.js';
+            }
+        });
+    })(jQuery);
+&lt;/script&gt;
+</code></pre>
+
+<h3>Exemple 1: Auto-loading Full options/without configuration</h3>
+
+<pre><code>&lt;!doctype&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;jQuery.pluginautoload: Exemple1 - Auto-loading Full options/without configuration&lt;/title&gt;
+    &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="../jquery.pluginautoload.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;jQuery.pluginautoload: Exemple 1 - Auto-loading Full options/without configuration&lt;/h1&gt;
+    &lt;div data-jquery-type="myplugin"&gt;&lt;/div&gt;
+    &lt;div data-jquery-type="mypluginwithparams" data-jquery-params='["parameters1", {"paramaters2": "is a struct"}, 325]'&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3>Exemple 2: Auto-loading with automatic Ajax import for custom path and custom file names</h3>
+
+<pre><code>&lt;!doctype&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;jQuery.pluginautoload: Exemple2 -  Auto-loading with automatic Ajax import for custom path and custom file names&lt;/title&gt;
+    &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="../jquery.pluginautoload.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        ;(function($){
+            $.pluginautoload_options = $.extend({}, $.pluginautoload_options, {
+                libs_dir:       'jscustom/',
+                filename:       function( p_type ){
+                    return this.libs_dir + 'jquery.' + p_type.toLowerCase() + 'custom.js';
+                }
+            });
+        })(jQuery);
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;jQuery.pluginautoload: Exemple 2&lt;/h1&gt;
+    &lt;h2&gt;Auto-loading with automatic Ajax import for custom path and custom file names&lt;/h2&gt;
+    &lt;div data-jquery-type="myplugin"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3>Exemple 3: Auto-loading for a section only</h3>
+
+<pre><code>&lt;!doctype&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;jQuery.pluginautoload: Exemple 3 - Auto-loading for a section of page only&lt;/title&gt;
+    &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="../jquery.pluginautoload.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        ;(function($){
+            $.pluginautoload_options = $.extend({}, $.pluginautoload_options, {
+                autoload: false
+            });
+
+            $(function(){
+                $('#autoload').pluginautoload();
+            });
+        })(jQuery);
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;jQuery.pluginautoload: Exemple 3&lt;/h1&gt;
+    &lt;h2&gt;Auto-loading for a section of page only&lt;/h2&gt;
+    &lt;div data-jquery-type="myplugin"&gt;This div is not auto-loaded&lt;/div&gt;
+    &lt;div id="autoload"&gt;
+        &lt;div data-jquery-type="myplugin"&gt;This div is auto-loaded&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
         </section>
 
