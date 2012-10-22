@@ -1,8 +1,8 @@
 /**
- * PluginAutoLoad: Chargement automatique des plugins ˆ partir des balises HTML
- * http://www.marcbuils.fr
+ * PluginAutoLoad: Load your plugins on html DOM without javascript code.
+ * http://marcbuils.github.com/jquery.pluginautoload/
  * 
- * Par Marc Buils ( marc.buils@gmail.com )
+ * Par Marc Buils ( marc.buils@marcbuils.fr )
  * Sous licence LGPL v3 (http://www.gnu.org/licenses/lgpl-3.0.txt)
  * 
  * v0.1.0:

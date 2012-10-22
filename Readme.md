@@ -1,5 +1,5 @@
 #jQuery.pluginautoload
-##Automatic plugin loading on html DOM
+##Automatic plugin loader for html DOM
 jQuery.pluginautoload load your plugins on html DOM without javascript code.
 This plugin is same as dojo or jQuery mobile system.
 
