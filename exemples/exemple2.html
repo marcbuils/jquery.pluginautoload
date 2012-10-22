@@ -1,0 +1,24 @@
+<!doctype>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery.pluginautoload: Exemple2 -  Auto-loading with automatic Ajax import for custom path and custom file names</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="../jquery.pluginautoload.js"></script>
+	<script>
+		;(function($){
+			$.pluginautoload_options = $.extend({}, $.pluginautoload_options, {
+				libs_dir:		'jscustom/',
+				filename: 		function( p_type ){
+					return this.libs_dir + 'jquery.' + p_type.toLowerCase() + 'custom.js';
+				}
+			});
+		})(jQuery);
+	</script>
+</head>
+<body>
+	<h1>jQuery.pluginautoload: Exemple 2</h1>
+	<h2>Auto-loading with automatic Ajax import for custom path and custom file names</h2>
+	<div data-jquery-type="myplugin"></div>
+</body>
+</html>

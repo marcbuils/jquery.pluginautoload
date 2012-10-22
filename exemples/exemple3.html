@@ -1,0 +1,27 @@
+<!doctype>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery.pluginautoload: Exemple 3 - Auto-loading for a section of page only</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="../jquery.pluginautoload.js"></script>
+	<script>
+		;(function($){
+			$.pluginautoload_options = $.extend({}, $.pluginautoload_options, {
+				autoload: false
+			});
+			
+			$(function(){
+				$('#autoload').pluginautoload();
+			});
+		})(jQuery);
+	</script>
+</head>
+<body>
+	<h1>jQuery.pluginautoload: Exemple 3 - Auto-loading for a section of page only</h1>
+	<div data-jquery-type="myplugin">This div is not auto-loaded</div>
+	<div id="autoload">
+		<div data-jquery-type="myplugin">This div is auto-loaded</div>
+	</div>
+</body>
+</html>

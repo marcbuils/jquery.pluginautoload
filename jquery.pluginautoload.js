@@ -15,7 +15,7 @@
 (function($){
 	$.pluginautoload_options = {
 		autoload:		true,
-		autoinclude:	false,
+		autoimport:		true,
 		libs_dir:		'js/',
 		filename: 		function( p_type ){
 			return this.libs_dir + 'jquery.' + p_type.toLowerCase() + '.js';
@@ -27,19 +27,27 @@
 		
 		this.find('[data-jquery-type]:not(.jquery_pluginautoload)').each( function(){
 			var $_this = $(this);
-			var _params = ( $_this.attr('data-jquery-params') == undefined ? [] : JSON.parse($(this).attr('data-jquery-params')) );
+			var _params = ( typeof($_this.attr('data-jquery-params')) == "undefined" ? [] : JSON.parse($_this.attr('data-jquery-params')) );
 			var _type = $_this.attr('data-jquery-type');
 			
-			if (_options.autoinclude && $.fn[_type] == undefined){
+			if (_options.autoimport && typeof($.fn[_type]) == "undefined"){
 				$.ajax( _options.filename( _type ), {
 					async:			false,
 					dataTypeString:	'script'
 				});
-				$_this[_type].apply($_this, _params);
+				if ( typeof($.fn[_type]) != "undefined" ){
+					$_this[_type].apply($_this, _params);
+				} else {
+					console.error("File %s loaded but plugin $.fn.%s not found", _options.filename( _type ), _type );
+				}
 			}else{
-				$(this)[_type].apply($_this, _params);
+				if ( typeof($.fn[_type]) != "undefined" ){
+					$_this[_type].apply($_this, _params);
+				} else {
+					console.error("Plugin $.fn.%s not found", _type );
+				}
 			}
-			$(this).addClass('jquery_pluginautoload');
+			$_this.addClass('jquery_pluginautoload');
 		});
 		
 		return this;
