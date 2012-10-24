@@ -57,7 +57,7 @@
 	$.fn.pluginautoload = function( p_options ){
 		var _options = $.extend({}, $.pluginautoload_options, p_options);
 		
-		this.find('[data-jquery-type]:not(.jquery_pluginautoload)').each( function(){
+		this.find('[data-jquery-type][data-pluginautoload=1]').each( function(){
 			var $_this = $(this);
 			var _params = ( typeof($_this.attr('data-jquery-params')) == "undefined" ? [] : JSON.parse($_this.attr('data-jquery-params')) );
 			var _type = $_this.attr('data-jquery-type');
@@ -89,7 +89,7 @@
 					}
 				}
 			}
-			$_this.addClass('jquery_pluginautoload');
+			$_this.attr('data-pluginautoload', 1);
 		});
 		
 		return this;
