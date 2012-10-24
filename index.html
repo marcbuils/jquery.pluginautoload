@@ -33,7 +33,7 @@
         <section id="main_content">
           <h1>jQuery.pluginautoload</h1>
 
-<h2>Automatic plugin loading on html DOM</h2>
+<h2>Automatic plugin loader for html DOM</h2>
 
 <p>jQuery.pluginautoload load your plugins on html DOM without javascript code.
 This plugin is same as dojo or jQuery mobile system.</p>
@@ -48,12 +48,17 @@ This plugin is same as dojo or jQuery mobile system.</p>
 
 <h2>Current version</h2>
 
-<p>v0.2.0: </p>
+<p>v0.3.0: </p>
 
 <ul>
-<li>Add Ajax automatic script import </li>
-<li>Add a better parmeters parser</li>
-</ul><h2>Usation</h2>
+<li>Add asynchron lazyload system for script download </li>
+<li>Replace class usation by data-dataloader parameter for DOM loaded</li>
+<li>Remove console warning for old browsers</li>
+</ul><h2>Warning</h2>
+
+<p>On old browser, a JSON framework is required (see <a href="https://github.com/douglascrockford/JSON-js">https://github.com/douglascrockford/JSON-js</a>)</p>
+
+<h2>Usation</h2>
 
 <p>For default use, load only jQuery.pluginautoload script:</p>
 
