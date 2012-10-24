@@ -10,9 +10,13 @@ Marc Buils (marc.buils@marcbuils.fr)
 LGPL v3 (http://www.gnu.org/licenses/lgpl-3.0.txt)
 
 ##Current version
-v0.2.0: 
- * Add Ajax automatic script import 
- * Add a better parmeters parser
+v0.3.0: 
+ * Add asynchron lazyload system for script download 
+ * Replace class usation by data-dataloader parameter for DOM loaded
+ * Remove console warning for old browsers
+
+## Warning
+On old browser, a JSON framework is required (see https://github.com/douglascrockford/JSON-js)
 
 ##Usation
 For default use, load only jQuery.pluginautoload script:

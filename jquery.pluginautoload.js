@@ -13,8 +13,10 @@
  * Add a better parmeters parser
  * Add exemples
  * 
- * v0.3.0:
- * Change Ajax loading system 
+ * v0.3.0 - 24/10/2012: 
+ * Add asynchron lazyload system for script download 
+ * Replace class usation by data-dataloader parameter for DOM loaded
+ * Remove console warning for old browsers
  */
 (function($){
 	$.pluginautoload_options = {
@@ -57,7 +59,7 @@
 	$.fn.pluginautoload = function( p_options ){
 		var _options = $.extend({}, $.pluginautoload_options, p_options);
 		
-		this.find('[data-jquery-type][data-pluginautoload=1]').each( function(){
+		this.find('[data-jquery-type]:not([data-pluginautoload=1])').each( function(){
 			var $_this = $(this);
 			var _params = ( typeof($_this.attr('data-jquery-params')) == "undefined" ? [] : JSON.parse($_this.attr('data-jquery-params')) );
 			var _type = $_this.attr('data-jquery-type');
