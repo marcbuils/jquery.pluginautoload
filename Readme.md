@@ -13,6 +13,7 @@ LGPL v3 (http://www.gnu.org/licenses/lgpl-3.0.txt)
 v0.2.0: 
  * Add Ajax automatic script import 
  * Add a better parmeters parser
+ * Add exemples
 
 ##Usation
 For default use, load only jQuery.pluginautoload script:
