@@ -44,7 +44,7 @@ You can change default options with following code:
 
 ###Exemple 1: Auto-loading Full options/without configuration
 ```
-<!doctype>
+<!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8" />
@@ -62,7 +62,7 @@ You can change default options with following code:
 
 ###Exemple 2: Auto-loading with automatic Ajax import for custom path and custom file names
 ```
-<!doctype>
+<!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8" />
@@ -90,7 +90,7 @@ You can change default options with following code:
 
 ###Exemple 3: Auto-loading for a section only
 ```
-<!doctype>
+<!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8" />
